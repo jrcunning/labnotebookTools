@@ -20,6 +20,7 @@ labnb_entry <- function(title = "new post", serve = FALSE, dir = "_source", subd
   # Read in the skeleton post
   post <- readLines("skeleton_post.Rmd")
   post[grepl("title: ", post)] <- paste0("title:  ", title)
+  post[grepl("date: ", post)] <- paste0("date:  ", Sys.time())
   writeLines(post, rmd_name)
 
   system(paste("open", rmd_name, sep=" "))
