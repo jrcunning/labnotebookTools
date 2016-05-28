@@ -9,7 +9,7 @@ labnb_entry <- function(title = "new post", serve = FALSE, dir = "_source", subd
   fname <- gsub(paste0("-", "$|^", "-"), "", gsub(paste0("-", "+"), "-", gsub("[[:space:]]|[[:punct:]]", "-", tolower(title))))
 
   if(subdir){
-    fpath <- file.path(dir, fname)
+    fpath <- file.path(dir, paste0(Sys.Date(), "-", fname))
     dir.create(fpath)
   } else {
     fpath <- dir
