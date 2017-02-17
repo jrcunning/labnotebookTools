@@ -1,4 +1,4 @@
-MasterMix <- function(n=1, assays=NULL) {
+MasterMix <- function(n=1, rep=2, assays=NULL) {
   Mc <- list(GTMM=5, McF=0.5, McR=0.5, McP=0.5, H20=2.5)
   Ss <- list(GTMM=5, SsF=0.5, SsR=0.5, SsP=0.5, H20=2.5)
   Of <- list(GTMM=5, OfF=0.5, OfR=0.5, OfP=0.5, H20=2.5)
@@ -9,6 +9,6 @@ MasterMix <- function(n=1, assays=NULL) {
   D  <- list(GTMM=5,  DF=0.5,  DR=0.5,  DP=0.5, H20=2.5)
   CD <- list(GTMM=5,  CF=0.5,  CR=0.5,  CP=0.5, DF=0.5, DR=0.5, DP=0.5, H20=1)
 
-  mix <- sapply(assays, function(x) lapply(get(x), function(x) x * n))
+  mix <- sapply(assays, function(x) lapply(get(x), function(x) x * n * rep))
   lapply(mix, data.frame)
 }
