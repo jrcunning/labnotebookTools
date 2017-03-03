@@ -11,6 +11,6 @@ qPCRlayout <- function(samples=1:24, targets=c("Mc", "CD"), start=c(1,1)) {
   df <- data.frame(matrix(paste(t(s), '\\', t(t)), nrow=8, byrow=T))
   colnames(df) <- 1:12
   rownames(df) <- LETTERS[1:8]
-  pander::pander(df)
+  knitr::kable(df)
   return(df)
 }
