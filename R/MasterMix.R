@@ -9,6 +9,12 @@ MasterMix <- function(n=1, rep=2, assays=NULL) {
   D  <- list(GTMM=5,  DF=0.5,  DR=0.5,  DP=0.5, H20=2.5)
   CD <- list(GTMM=5,  CF=0.5,  CR=0.5,  CP=0.5, DF=0.5, DR=0.5, DP=0.5, H20=1)
 
-  mix <- sapply(assays, function(x) lapply(get(x), function(x) x * n * rep))
-  lapply(mix, data.frame)
+  mix <- lapply(assays, function(x) lapply(get(x), function(x) x * n * rep))
+  names(mix) <- unlist(assays)
+
+  for (i in 1:length(mix)) {
+    print(knitr::kable(data.frame(mix[[i]]), caption=paste(names(mix)[i], "MasterMix:")))
+    #pander::pander(data.frame(mix[[i]]))
+  }
 }
+
